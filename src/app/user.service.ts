@@ -16,6 +16,7 @@ export class UserService {
   }
 
   login(user: any): Observable<any> {
+    localStorage.removeItem('token');
     return this.http.post(`${this.baseUrl}/login`, user,{ responseType: "text"});
   }
 }

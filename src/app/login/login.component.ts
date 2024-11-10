@@ -14,9 +14,12 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   login() {
+    
     this.userService.login(this.user).subscribe(
       response => {
         console.log('Login successful:', response);
+
+        localStorage.setItem('token', response);  // Store the token
         this.message = 'Login successful!';
         this.router.navigate(['/transactions']); // Navigate to transactions page
       },

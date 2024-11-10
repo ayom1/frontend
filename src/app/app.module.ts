@@ -7,15 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
