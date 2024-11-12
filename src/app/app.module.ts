@@ -11,6 +11,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { AdminComponent } from './admin/admin.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AuthInterceptor } from './auth.interceptor';
     RegisterComponent,
     LoginComponent,
     TransactionsComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

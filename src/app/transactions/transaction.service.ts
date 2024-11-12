@@ -11,11 +11,11 @@ export class TransactionService {
 
   constructor(private http: HttpClient) {}
 
-  getTransactions(userId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/user/${userId}`);
+  getTransactions(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/list`);
   }
 
-  addTransaction(userId: number, transaction: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/user/${userId}`, transaction);
+  addTransaction(transaction: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/add`, transaction);
   }
 }

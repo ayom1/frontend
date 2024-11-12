@@ -21,7 +21,7 @@ export class TransactionsComponent implements OnInit {
 
   // Load transactions from the backend
   loadTransactions() {
-    this.transactionService.getTransactions(this.userId).subscribe(
+    this.transactionService.getTransactions().subscribe(
       (data) => {
         this.transactions = data;
       },
@@ -35,7 +35,7 @@ export class TransactionsComponent implements OnInit {
 
   // Add a new transaction
   addTransaction() {
-    this.transactionService.addTransaction(this.userId, this.newTransaction).subscribe(
+    this.transactionService.addTransaction( this.newTransaction).subscribe(
       (response) => {
         console.log('Transaction added:', response);
         this.transactions.push(response); // Add to the list
@@ -49,8 +49,5 @@ export class TransactionsComponent implements OnInit {
     );
   }
 
-  logout() {
-    localStorage.removeItem('token');  // Remove JWT token
-    this.router.navigate(['/login']);  // Redirect to login page
-  }
+
 }

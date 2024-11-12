@@ -23,7 +23,7 @@ export class RegisterComponent {
           localStorage.removeItem('token');
           localStorage.setItem('token', response);  // Store the token
           this.message = 'Login successful!';
-          this.router.navigate(['/transactions']); // Navigate to transactions page
+          this.router.navigate(['/landing']); // Navigate to transactions page
         },
         error => {
           console.error('Login failed:', error);
