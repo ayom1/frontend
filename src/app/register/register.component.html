@@ -1,3 +1,4 @@
+
 <div class="register-container">
 
   <!-- register.component.html -->
@@ -5,6 +6,16 @@
   <i class="fab fa-facebook-f"></i> Register with Facebook
 </button>
 
+<a (click)="loginWithGoogle()" class="google-login-btn">
+  <img
+  src="https://www.gstatic.com/images/branding/product/1x/gsa_64dp.png"
+  alt="Google Logo"
+  class="google-icon"
+  width="20"
+  height="20"
+/>
+  Sign in with Google
+</a>
 
     <h2>Register</h2>
     <form (ngSubmit)="register()">

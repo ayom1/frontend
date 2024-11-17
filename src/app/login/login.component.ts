@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { FacebookAuthService } from '../facebook.service';
 import { HttpClient } from '@angular/common/http';
+import { GoogleAuthService } from '../google.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,9 @@ export class LoginComponent {
 
   constructor(private userService: UserService, private router: Router,
     private facebook:FacebookAuthService,
-    private http: HttpClient) {}
+    private http: HttpClient,
+    private googleAuthService: GoogleAuthService,
+  ) {}
 
   login() {
     
@@ -59,4 +62,8 @@ export class LoginComponent {
         }
       });
   }
+  loginWithGoogle() {
+    this.googleAuthService.loginWithGoogle();
+  }
+
 }

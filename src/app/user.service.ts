@@ -1,6 +1,6 @@
 // user.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -50,4 +50,22 @@ export class UserService {
 
     return roleNames.includes('ROLE_ADMIN');
   }  
+  public registerWithGoogle(token: string): void {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    headers.set('responseType','text');
+    //this.http.post<any>(this.baseUrl+'/google', { token }, { headers });
+    const url = this.baseUrl+'/google';
+    this.http.post(url, { token },{ responseType: 'text' })
+      .subscribe({
+        next: (response) => {
+          localStorage.removeItem('token');
+          localStorage.setItem('token', response);  // Store the token
+          //this.message = 'Login successful!';
+          this.router.navigate(['/landing']); 
+        },
+        error: (error) => {
+          console.error('Registration failed:', error);
+        }
+      });
+  }
 }

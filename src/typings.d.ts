@@ -4,5 +4,6 @@
 interface Window {
     fbAsyncInit: () => void;
     FB: any;
+    google: any;
   }
   

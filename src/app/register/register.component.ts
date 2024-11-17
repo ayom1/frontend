@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { FacebookAuthService } from '../facebook.service';
 import { HttpClient } from '@angular/common/http';
+import { GoogleAuthService } from '../google.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterComponent {
   constructor(private userService: UserService, 
     private router: Router,
     private facebook:FacebookAuthService,
-    private http: HttpClient
+    private http: HttpClient,
+    private googleAuthService: GoogleAuthService,
   ) {
 
   console.log('ddd');
@@ -73,4 +75,10 @@ export class RegisterComponent {
         }
       });
   }
+
+  loginWithGoogle() {
+    this.googleAuthService.loginWithGoogle();
+  }
+
+
 }
